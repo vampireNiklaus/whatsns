@@ -1,0 +1,20 @@
+此系统环境要求php版本5.4-7.2
+
+安装前请先修改application\config\config.php下默认域名
+找到第三行：
+$config['base_url'] ='http://localhost/' ;
+将localhost换成你网站域名。
+后续如果网站变更为https，这里需要将http变更为https,切记。
+
+如果网站安装完成后模板无法正常解析或者500错误，记得将php.ini里启用short_open_tag,设置为On，然后重启nginx或者apache.
+具体设置方法见网址：
+https://jingyan.baidu.com/article/363872ec26a90f6e4aa16f4d.html
+
+
+程序默认带了apache的伪静态。nginx伪静态设置如下：
+if (!-e $request_filename) {
+
+rewrite ^/(.*)$ /index.php?$1;
+
+}
+
